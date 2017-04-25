@@ -153,6 +153,18 @@ class Api {
         );
     };
 
+    /**
+     * Register PostCss compilation.
+     *
+     * @param {string} src
+     * @param {string} output
+     * @param {object} pluginOptions
+     */
+    postcss(src, output, pluginOptions = {}) {
+        return this.preprocess(
+            'PostCss', src, output, pluginOptions
+        );
+    };
 
     /**
      * Register a generic CSS preprocessor.
