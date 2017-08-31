@@ -5,9 +5,9 @@ mix.js('src', 'output')
    .version([]);
 ```
 
-To assist with long-term caching, Laravel Mix provides the `mix.version()` method, which enables file name hashing. such as `app.8e5c48eadbfdd5458ec6.js`. This is useful for cache-busting. Imagine that your server automatically caches scripts for a year, to improve performance. That's great, but, each time you make a change to your application code, you need some way to instruct the server to bust the cache. This is typically done through the use of query strings, or file hashing.
+To assist with long-term caching, Laravel Mix provides the `mix.version()` method, which enables file hashing. such as `app.js?id=8e5c48eadbfdd5458ec6`. This is useful for cache-busting. Imagine that your server automatically caches scripts for a year, to improve performance. That's great, but, each time you make a change to your application code, you need some way to instruct the server to bust the cache. This is typically done through the use of query strings, or file hashing.
 
-With versioning enabled, each time your code changes, a new hashed file will be generated, and the old one will be deleted. Consider the following `webpack.mix.js` file.
+With versioning enabled, each time your code changes, a new hashed query  string file will be generated. Consider the following `webpack.mix.js` file.
 
 ```js
 let mix = require('laravel-mix');
@@ -17,7 +17,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .version();
 ```
 
-Upon compilation, you'll see `./public/css/app.8e5c48eadbfdd5458ec6.css` and .`/public/js/app.8e5c48eadbfdd5458ec6.js`. Of course, your particular hash will be unique. Each time you adjust your JavaScript, the compiled files will receive a newly hashed name, which will effectively bust the cache, once pushed to production.
+Upon compilation, you'll see `/css/app.css?id=5ee7141a759a5fb7377a` and `/js/app.js?id=0441ad4f65d54589aea5` in your `mix-manifest.json` file. Of course, your particular hash will be unique. Each time you adjust your JavaScript, the compiled files will receive a newly hashed name, which will effectively bust the cache, once pushed to production.
 
 As an example, try running`webpack --watch`, and then change a bit of your JavaScript. You'll instantly see a newly generated bundle and stylesheet.
 
@@ -58,4 +58,4 @@ The `mix.version()` will automatically version any compiled JavaScript, Sass/Les
 mix.version(['public/js/random.js']);
 ```
 
-Now, we'll still version any relevant compiled files, but we'll also create a `public/js/random.{hash}.js` file, and update your `mix-manifest.json` file.
+Now, we'll still version any relevant compiled files, but we'll also append a query string, `public/js/random.js?{hash}`, and update your `mix-manifest.json` file.

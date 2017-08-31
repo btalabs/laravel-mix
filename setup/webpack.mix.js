@@ -20,8 +20,10 @@ mix.js('src/app.js', 'dist/')
 // mix.extract(vendorLibs);
 // mix.sass(src, output);
 // mix.standaloneSass('src', output); <-- Faster, but isolated from Webpack.
+// mix.fastSass('src', output); <-- Alias for mix.standaloneSass().
 // mix.less(src, output);
 // mix.stylus(src, output);
+// mix.postCss(src, output, [require('postcss-some-plugin')()]);
 // mix.browserSync('my-site.dev');
 // mix.combine(files, destination);
 // mix.babel(files, destination); <-- Identical to mix.combine(), but also includes Babel compilation.

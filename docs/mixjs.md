@@ -6,12 +6,12 @@ mix.js(src|[src], output)
 
 With a single line of code, Laravel Mix allows you to trigger a number of vital actions.
 
-* ES2015 + modules compilation
+* ES2017 + modules compilation
 * Build and compile `.vue` components \(via `vue-loader`\)
 * Hot module replacement
 * Tree-shaking, new in webpack 2 \(removes unused library code\)
 * Extract vendor libraries \(via `mix.extract()`\), for improved long-term caching
-* Automatic versioning \(file hashing\), via `mix.version()`
+* Automatic versioning \(query string hash\), via `mix.version()`
 
 
 ### Usage
